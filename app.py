@@ -8,7 +8,7 @@ if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
 def login():
-    st.title("🔐 Akses Editor Koperasi")
+    st.title("🔐 Biro Koperasi")
     # Bagian tengah layar
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
@@ -32,7 +32,7 @@ else:
         st.session_state.logged_in = False
         st.rerun()
 
-    st.title("📝 Editor Keuangan Biro Koperasi")
+    st.title("📝 Biro Koperasi ")
     st.write("Silakan edit tabel di bawah. Perubahan tersimpan secara otomatis.")
 
     # --- LINK GOOGLE SHEETS TERBARU ANDA ---
@@ -42,3 +42,4 @@ else:
     
     # Menampilkan Spreadsheet dalam bingkai (Iframe)
     st.components.v1.iframe(sheet_editor_url, height=800, scrolling=True)
+
