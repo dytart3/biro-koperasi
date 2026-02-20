@@ -8,7 +8,7 @@ if 'logged_in' not in st.session_state:
     st.session_state.logged_in = False
 
 def login():
-    st.title("🔐 Biro HENGKI")
+    st.title("🔐 Biro Koperasi")
     # Bagian tengah layar
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
@@ -42,5 +42,6 @@ else:
     
     # Menampilkan Spreadsheet dalam bingkai (Iframe)
     st.components.v1.iframe(sheet_editor_url, height=800, scrolling=True)
+
 
 
