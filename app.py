@@ -33,4 +33,7 @@ else:
 
     # --- MENAMPILKAN GOOGLE SHEETS (MODE EDIT) ---
     # Menggunakan link dasar spreadsheet Anda agar bisa diedit
-    sheet_editor_url = "
+    sheet_editor_url = "https://docs.google.com/spreadsheets/d/1S0yN69J6fYV0xDUKC919aVKP5WuN7d0A7GZn0QsIQzdG_MFGBRcnae4DjogoUIOW4ioJ1HdqPQHtO4/edit"
+    
+    # Menampilkan Spreadsheet di dalam Iframe
+    st.components.v1.iframe(sheet_editor_url, height=800, scrolling=True)
