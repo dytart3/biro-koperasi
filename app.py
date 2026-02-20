@@ -9,31 +9,36 @@ if 'logged_in' not in st.session_state:
 
 def login():
     st.title("🔐 Akses Editor Koperasi")
-    user = st.text_input("Username")
-    pw = st.text_input("Password", type="password")
-    if st.button("Masuk"):
-        if user == "admin" and pw == "koperasi123":
-            st.session_state.logged_in = True
-            st.rerun()
-        else:
-            st.error("Username atau password salah")
+    # Bagian tengah layar
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        user = st.text_input("Username")
+        pw = st.text_input("Password", type="password")
+        if st.button("Masuk"):
+            if user == "admin" and pw == "koperasi123":
+                st.session_state.logged_in = True
+                st.rerun()
+            else:
+                st.error("Username atau password salah")
 
 # --- TAMPILAN UTAMA ---
 if not st.session_state.logged_in:
     login()
 else:
     # Sidebar untuk Logout
-    st.sidebar.title("Menu")
-    if st.sidebar.button("🚪 Keluar"):
+    st.sidebar.title("Menu Utama")
+    st.sidebar.success("Status: Terhubung ke Google Sheets")
+    if st.sidebar.button("🚪 Log Out"):
         st.session_state.logged_in = False
         st.rerun()
 
-    st.title("📝 Edit Laporan Keuangan Langsung")
-    st.info("Anda bisa menambah, menghapus, atau mengubah data langsung di bawah ini. Perubahan akan tersimpan otomatis ke Google Sheets.")
+    st.title("📝 Editor Keuangan Biro Koperasi")
+    st.write("Silakan edit tabel di bawah. Perubahan tersimpan secara otomatis.")
 
-    # --- MENAMPILKAN GOOGLE SHEETS (MODE EDIT) ---
-    # Menggunakan link dasar spreadsheet Anda agar bisa diedit
-    sheet_editor_url = "https://docs.google.com/spreadsheets/d/1S0yN69J6fYV0xDUKC919aVKP5WuN7d0A7GZn0QsIQzdG_MFGBRcnae4DjogoUIOW4ioJ1HdqPQHtO4/edit"
+    # --- LINK GOOGLE SHEETS TERBARU ANDA ---
+    # Saya sudah mengambil ID unik dari link yang Anda berikan
+    sheet_id = "1w0nUXKqoAc3UhzFdlO7yxwvz5Grfy5rS"
+    sheet_editor_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit?usp=sharing"
     
-    # Menampilkan Spreadsheet di dalam Iframe
+    # Menampilkan Spreadsheet dalam bingkai (Iframe)
     st.components.v1.iframe(sheet_editor_url, height=800, scrolling=True)
